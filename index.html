@@ -49,14 +49,6 @@
                             <div class="tab-pane fade show active" id="home" role="tabpanel">
                                 <div class="card">
                                     <div class="card-body">
-                                        <form>
-                                            <div class="mb-3">
-                                                <label for="disabledSelect" class="form-label">Select unit</label>
-                                                <select id="disabledSelect" class="form-select">
-                                                    <option>Esther</option>
-                                                    <option>Sylvie</option>
-                                                </select>
-                                            </div>
                                             <div>
                                                 <div class="row parameters">
                                                     <b class="col-3">Parameter</b>
@@ -121,41 +113,353 @@
                                                 <div class="row parameters">
                                                     <b class="col-3" id="lbl_jump_damage">Jump dmg</b>
                                                     <p class="col-3" id="jump_damage">0%</p>
-                                                    <b class="col-3" id="lbl_max_mod">Max mod</b>
-                                                    <p class="col-3" id="max_mod">300%</p>
+                                                    <b class="col-3" id="lbl_draw">Draw</b>
+                                                    <p class="col-3" id="draw">0%</p>
+                                                </div>
+                                                <div class="row parameters">
+                                                    <b class="col-3" id="lbl_physical_mitigation">Phys. mit.   </b>
+                                                    <p class="col-3" id="physical_mitigation">0%</p>
+                                                    <b class="col-3" id="lbl_magical_mitigation">Magic mit.</b>
+                                                    <p class="col-3" id="magical_mitigation">0%</p>
+                                                </div>
+                                                <div class="row parameters">
+                                                    <b class="col-3" id="lbl_mitigation">Mitigation</b>
+                                                    <p class="col-3" id="mitigation">0%</p>
                                                 </div>
                                             </div>
                                             <br>
-                                            <div class="mb-3">
-                                                <h5>Elemental resistances</h5>
-                                                <div class="row">
-                                                    <div class="input-group w-25">
-                                                        <div class="input-group-text w-35 p-1" id="img_fire_res">
-                                                            <img src="img/ui/fire.png" height="20" width="20"></img>
-                                                        </div>
-                                                        <input type="text" class="form-control p-2" placeholder="0" id="fire_res" readonly>
+                                            <div class="row icons ">
+                                                <div class="col-3 align-items-center">
+                                                    <b>Resistances</b>
+                                                </div>
+                                                <div class="col-1">
+                                                    <img src="img/ui/fire.png" class="roundedC float-start" height="38" width="38">
+                                                    <div class="text-block">
+                                                        <b><strong id="res_fire">0</strong></b>
                                                     </div>
-                                                    <div class="input-group w-25">
-                                                        <div class="input-group-text w-35 p-1" id="img_fire_res">
-                                                            <img src="img/ui/fire.png" height="20" width="20"></img>
-                                                        </div>
-                                                        <input type="text" class="form-control p-2" placeholder="0" id="fire_res" readonly>
+                                                </div>
+                                                <div class="col-1 text-wrap">
+                                                    <img src="img/ui/ice.png" class="roundedC float-start" height="38" width="38">
+                                                    <div class="text-block">
+                                                        <b><strong id="res_ice">0</strong></b>
                                                     </div>
-                                                    <div class="input-group w-25">
-                                                        <div class="input-group-text w-35 p-1" id="img_fire_res">
-                                                            <img src="img/ui/fire.png" height="20" width="20"></img>
-                                                        </div>
-                                                        <input type="text" class="form-control p-2" placeholder="0" id="fire_res" readonly>
+                                                </div>
+                                                <div class="col-1 text-wrap">
+                                                    <img src="img/ui/lightning.png" class="roundedC float-start" height="38" width="38">
+                                                    <div class="text-block">
+                                                        <b><strong id="res_lightning">0</strong></b>
                                                     </div>
-                                                    <div class="input-group w-25">
-                                                        <div class="input-group-text w-35 p-1" id="img_fire_res">
-                                                            <img src="img/ui/fire.png" height="20" width="20"></img>
-                                                        </div>
-                                                        <input type="text" class="form-control p-2" placeholder="0" id="fire_res" readonly>
+                                                </div>
+                                                <div class="col-1 text-wrap">
+                                                    <img src="img/ui/water.png" class="roundedC float-start" height="38" width="38">
+                                                    <div class="text-block">
+                                                        <b><strong id="res_water">0</strong></b>
+                                                    </div>
+                                                </div>
+                                                <div class="col-1 text-wrap">
+                                                    <img src="img/ui/wind.png" class="roundedC float-start" height="38" width="38">
+                                                    <div class="text-block">
+                                                        <b><strong id="res_wind">0</strong></b>
+                                                    </div>
+                                                </div>
+                                                <div class="col-1 text-wrap">
+                                                    <img src="img/ui/earth.png" class="roundedC float-start" height="38" width="38">
+                                                    <div class="text-block">
+                                                        <b><strong id="res_earth">0</strong></b>
+                                                    </div>
+                                                </div>
+                                                <div class="col-1 text-wrap">
+                                                    <img src="img/ui/light.png" class="roundedC float-start" height="38" width="38">
+                                                    <div class="text-block">
+                                                        <b><strong id="res_light">0</strong></b>
+                                                    </div>
+                                                </div>
+                                                <div class="col-1 text-wrap">
+                                                    <img src="img/ui/dark.png" class="roundedC float-start" height="38" width="38">
+                                                    <div class="text-block">
+                                                        <b><strong id="res_dark">0</strong></b>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </form>
+                                            <div class="row icons">
+                                                <div class="col-3">
+                                                    <b>P. boost</b>
+                                                </div>
+                                                <div class="col-1">
+                                                    <img src="img/ui/fire.png" class="roundedC float-start" height="38" width="38">
+                                                    <div class="text-block">
+                                                        <b><strong id="pboost_fire">0</strong></b>
+                                                    </div>
+                                                </div>
+                                                <div class="col-1 text-wrap">
+                                                    <img src="img/ui/ice.png" class="roundedC float-start" height="38" width="38">
+                                                    <div class="text-block">
+                                                        <b><strong id="pboost_ice">0</strong></b>
+                                                    </div>
+                                                </div>
+                                                <div class="col-1 text-wrap">
+                                                    <img src="img/ui/lightning.png" class="roundedC float-start" height="38" width="38">
+                                                    <div class="text-block">
+                                                        <b><strong id="pboost_lightning">10</strong></b>
+                                                    </div>
+                                                </div>
+                                                <div class="col-1 text-wrap">
+                                                    <img src="img/ui/water.png" class="roundedC float-start" height="38" width="38">
+                                                    <div class="text-block">
+                                                        <b><strong  id="pboost_water">0</strong></b>
+                                                    </div>
+                                                </div>
+                                                <div class="col-1 text-wrap">
+                                                    <img src="img/ui/wind.png" class="roundedC float-start" height="38" width="38">
+                                                    <div class="text-block">
+                                                        <b><strong  id="pboost_wind">0</strong></b>
+                                                    </div>
+                                                </div>
+                                                <div class="col-1 text-wrap">
+                                                    <img src="img/ui/earth.png" class="roundedC float-start" height="38" width="38">
+                                                    <div class="text-block">
+                                                        <b><strong  id="pboost_earth">0</strong></b>
+                                                    </div>
+                                                </div>
+                                                <div class="col-1 text-wrap">
+                                                    <img src="img/ui/light.png" class="roundedC float-start" height="38" width="38">
+                                                    <div class="text-block">
+                                                        <b><strong  id="pboost_light">0</strong></b>
+                                                    </div>
+                                                </div>
+                                                <div class="col-1 text-wrap">
+                                                    <img src="img/ui/dark.png" class="roundedC float-start" height="38" width="38">
+                                                    <div class="text-block">
+                                                        <b><strong  id="pboost_dark">0</strong></b>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row icons">
+                                                <div class="col-3">
+                                                    <b>M. boost</b>
+                                                </div>
+                                                <div class="col-1">
+                                                    <img src="img/ui/fire.png" class="roundedC float-start" height="38" width="38">
+                                                    <div class="text-block">
+                                                        <b><strong id="mboost_fire">0</strong></b>
+                                                    </div>
+                                                </div>
+                                                <div class="col-1 text-wrap">
+                                                    <img src="img/ui/ice.png" class="roundedC float-start" height="38" width="38">
+                                                    <div class="text-block">
+                                                        <b><strong id="mboost_ice">0</strong></b>
+                                                    </div>
+                                                </div>
+                                                <div class="col-1 text-wrap">
+                                                    <img src="img/ui/lightning.png" class="roundedC float-start" height="38" width="38">
+                                                    <div class="text-block">
+                                                        <b><strong id="mboost_lightning">0</strong></b>
+                                                    </div>
+                                                </div>
+                                                <div class="col-1 text-wrap">
+                                                    <img src="img/ui/water.png" class="roundedC float-start" height="38" width="38">
+                                                    <div class="text-block">
+                                                        <b><strong id="mboost_water">0</strong></b>
+                                                    </div>
+                                                </div>
+                                                <div class="col-1 text-wrap">
+                                                    <img src="img/ui/wind.png" class="roundedC float-start" height="38" width="38">
+                                                    <div class="text-block">
+                                                        <b><strong  id="mboost_wind">0</strong></b>
+                                                    </div>
+                                                </div>
+                                                <div class="col-1 text-wrap">
+                                                    <img src="img/ui/earth.png" class="roundedC float-start" height="38" width="38">
+                                                    <div class="text-block">
+                                                        <b><strong  id="mboost_earth">0</strong></b>
+                                                    </div>
+                                                </div>
+                                                <div class="col-1 text-wrap">
+                                                    <img src="img/ui/light.png" class="roundedC float-start" height="38" width="38">
+                                                    <div class="text-block">
+                                                        <b><strong id="mboost_light">0</strong></b>
+                                                    </div>
+                                                </div>
+                                                <div class="col-1 text-wrap">
+                                                    <img src="img/ui/dark.png" class="roundedC float-start" height="38" width="38">
+                                                    <div class="text-block">
+                                                        <b><strong id="mboost_dark">0</strong></b>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row icons">
+                                                <div class="col-5">
+                                                    <b>Ailment resistances</b>
+                                                </div>
+                                                <div class="col-1 text-wrap p-0">
+                                                    <img src="img/ui/poison.png" class="roundedC float-start" height="38" width="38">
+                                                    <div class="text-block">
+                                                        <b><strong id="resist_poison">0</strong></b>
+                                                    </div>
+                                                </div>
+                                                <div class="col-1 text-wrap p-0">
+                                                    <img src="img/ui/blind.png" class="roundedC float-start" height="38" width="38">
+                                                    <div class="text-block">
+                                                        <b><strong id="resis_blind">100</strong></b>
+                                                    </div>
+                                                </div>
+                                                <div class="col-1 text-wrap p-0">
+                                                    <img src="img/ui/sleep.png" class="roundedC float-start" height="38" width="38">
+                                                    <div class="text-block">
+                                                        <b><strong id="resist_sleep">0</strong></b>
+                                                    </div>
+                                                </div>
+                                                <div class="col-1 text-wrap p-0">
+                                                    <img src="img/ui/silence.png" class="roundedC float-start" height="38" width="38">
+                                                    <div class="text-block">
+                                                        <b><strong id="resist_silence">0</strong></b>
+                                                    </div>
+                                                </div>
+                                                <div class="col-1 text-wrap p-0">
+                                                    <img src="img/ui/paralize.png" class="roundedC float-start" height="38" width="38">
+                                                    <div class="text-block">
+                                                        <b><strong id="resist_paralize">100</strong></b>
+                                                    </div>
+                                                </div>
+                                                <div class="col-1 text-wrap p-0">
+                                                    <img src="img/ui/confuse.png" class="roundedC float-start" height="38" width="38">
+                                                    <div class="text-block">
+                                                        <b><strong id="resist_confuse">100</strong></b>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row icons">
+                                                <div class="col-1 text-wrap offset-5 p-0">
+                                                    <img src="img/ui/disease.png" class="roundedC float-start" height="38" width="38">
+                                                    <div class="text-block">
+                                                        <b><strong id="resist_disease">100</strong></b>
+                                                    </div>
+                                                </div>
+                                                <div class="col-1 text-wrap p-0">
+                                                    <img src="img/ui/stone.png" class="roundedC float-start" height="38" width="38">
+                                                    <div class="text-block">
+                                                        <b><strong id="resis_stone">100</strong></b>
+                                                    </div>
+                                                </div>
+                                                <div class="col-1 text-wrap p-0">
+                                                    <img src="img/ui/charm.png" class="roundedC float-start" height="38" width="38">
+                                                    <div class="text-block">
+                                                        <b><strong id="resis_charm">100</strong></b>
+                                                    </div>
+                                                </div>
+                                                <div class="col-1 text-wrap p-0">
+                                                    <img src="img/ui/stop.png" class="roundedC float-start" height="38" width="38">
+                                                    <div class="text-block">
+                                                        <b><strong id="resist_stop">100</strong></b>
+                                                    </div>
+                                                </div>
+                                                <div class="col-1 text-wrap p-0">
+                                                    <img src="img/ui/zombie.png" class="roundedC float-start" height="38" width="38">
+                                                    <div class="text-block">
+                                                        <b><strong id="resist_zombie">0</strong></b>
+                                                    </div>
+                                                </div>
+                                                <div class="col-1 text-wrap p-0">
+                                                    <img src="img/ui/death.png" class="roundedC float-start" height="38" width="38">
+                                                    <div class="text-block">
+                                                        <b><strong id="mboost_death">0</strong></b>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row icons">
+                                                <div class="col-5">
+                                                    <b>
+                                                        Break resistances
+                                                    </b>
+                                                </div>
+                                                <div class="col-1 text-wrap p-0">
+                                                    <img src="img/ui/sword.png" class="roundedC float-start" height="38" width="38">
+                                                </div>
+                                                <div class="col-1 text-wrap p-0">
+                                                    <img src="img/ui/rod.png" class="roundedC float-start" height="38" width="38">
+                                                </div>
+                                                <div class="col-1 text-wrap p-0">
+                                                    <img src="img/ui/staff.png" class="roundedC float-start" height="38" width="38">
+                                                </div>
+                                                <div class="col-1 text-wrap p-0">
+                                                    <img src="img/ui/heavy_armor.png" class="roundedC float-start" height="38" width="38">
+                                                </div>
+                                            </div>
+                                            <b>Physical killers</b>
+                                            <div class="row parameters">
+                                                <b class="col-3">Aquan</b>
+                                                <p class="col-3" id="killer_p_aquan">50%</p>
+                                                <b class="col-3">Beast</b>
+                                                <p class="col-3" id="killer_p_beast">50%</p>
+                                            </div>
+                                            <div class="row parameters">
+                                                <b class="col-3">Bird</b>
+                                                <p class="col-3" id="killer_p_bird">50%</p>
+                                                <b class="col-3">Bug</b>
+                                                <p class="col-3" id="killer_p_bug">100%</p>
+                                            </div>
+                                            <div class="row parameters">
+                                                <b class="col-3">Demon</b>
+                                                <p class="col-3" id="killer_p_demon">50%</p>
+                                                <b class="col-3">Dragon</b>
+                                                <p class="col-3" id="killer_p_dragon">50%</p>
+                                            </div>
+                                            <div class="row parameters">
+                                                <b class="col-3">Human</b>
+                                                <p class="col-3" id="killer_p_human">50%</p>
+                                                <b class="col-3">Machine</b>
+                                                <p class="col-3" id="killer_p_machine">300%</p>
+                                            </div>
+                                            <div class="row parameters">
+                                                <b class="col-3">Plant</b>
+                                                <p class="col-3" id="killer_p_plant">100%</p>
+                                                <b class="col-3">Undead</b>
+                                                <p class="col-3" id="killer_p_undead">100%</p>
+                                            </div>
+                                            <div class="row parameters">
+                                                <b class="col-3">Stone</b>
+                                                <p class="col-3" id="killer_p_stone">300%</p>
+                                                <b class="col-3">Spirit</b>
+                                                <p class="col-3" id="killer_p_spirit">50%</p>
+                                            </div>
+                                            <br>
+                                            <b>Magical killers</b>
+                                            <div class="row parameters">
+                                                <b class="col-3">Aquan</b>
+                                                <p class="col-3" id="killer_p_aquan">50%</p>
+                                                <b class="col-3">Beast</b>
+                                                <p class="col-3" id="killer_p_beast">50%</p>
+                                            </div>
+                                            <div class="row parameters">
+                                                <b class="col-3">Bird</b>
+                                                <p class="col-3" id="killer_p_bird">50%</p>
+                                                <b class="col-3">Bug</b>
+                                                <p class="col-3" id="killer_p_bug">50%</p>
+                                            </div>
+                                            <div class="row parameters">
+                                                <b class="col-3">Demon</b>
+                                                <p class="col-3" id="killer_p_demon">50%</p>
+                                                <b class="col-3">Dragon</b>
+                                                <p class="col-3" id="killer_p_dragon">50%</p>
+                                            </div>
+                                            <div class="row parameters">
+                                                <b class="col-3">Human</b>
+                                                <p class="col-3" id="killer_p_human">50%</p>
+                                                <b class="col-3">Machine</b>
+                                                <p class="col-3" id="killer_p_machine">50%</p>
+                                            </div>
+                                            <div class="row parameters">
+                                                <b class="col-3">Plant</b>
+                                                <p class="col-3" id="killer_p_plant">50%</p>
+                                                <b class="col-3">Undead</b>
+                                                <p class="col-3" id="killer_p_undead">50%</p>
+                                            </div>
+                                            <div class="row parameters">
+                                                <b class="col-3">Stone</b>
+                                                <p class="col-3" id="killer_p_stone">50%</p>
+                                                <b class="col-3">Spirit</b>
+                                                <p class="col-3" id="killer_p_spirit">50%</p>
+                                            </div>
                                     </div>
                                   </div>
                             </div>

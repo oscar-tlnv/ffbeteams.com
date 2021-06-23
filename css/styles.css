@@ -6,7 +6,24 @@
   height: 1.5rem;
 }
 
-.w-35 {
-  width: 35% !important;
+.icons {
+  height: 40px;
+}
+
+.text-block {
+  position: relative;
+  bottom: 1.5rem;
+  right: 0rem;
+  left: 0.3rem;
+  color: white;
+  padding-left: -3rem;
+  padding-right: 1rem;
+  -webkit-text-stroke: 1px black;
+  width: 3rem;
+}
+
+.roundedC {
+  border-radius: 30%;
+  padding: 0;
 }
 /*# sourceMappingURL=styles.css.map */

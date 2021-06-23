@@ -7,6 +7,24 @@
     height: 1.5rem;
 }
 
-.w-35 {
-    width: 35% !important;
+.icons{
+    height: 40px;
+}
+
+.text-block {
+    position: relative;
+    bottom: 1.5rem;
+    right: 0rem;
+    left: 0.3rem;
+    color: rgb(255, 255, 255);
+    padding-left: -3rem;
+    padding-right: 1rem;
+    -webkit-text-stroke:1px rgb(0, 0, 0);
+    width: 3rem;
+  }
+
+  .roundedC{
+    border-radius: 30%;
+    //max-width: 100%;
+    padding: 0;
   }
