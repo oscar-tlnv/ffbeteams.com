@@ -31,9 +31,22 @@
           </div>
 
         <div class="container">
-            <div class="row">
+            <div class="row justify-content-center">
+                <div class="btn-group col-12 col-md-6" role="group">
+                    <input type="radio" class="btn-check" name="btnradio" id="btnradioteam" autocomplete="off" checked onclick="showBuilder()">
+                    <label class="btn btn-outline-primary" for="btnradioteam">Team builder</label>
+                  
+                    <input type="radio" class="btn-check" name="btnradio" id="btnradioenemy" autocomplete="off" onclick="showEnemy()">
+                    <label class="btn btn-outline-primary" for="btnradioenemy">Enemy selector</label>
+                  
+                    <input type="radio" class="btn-check" name="btnradio" id="btnradioturns" autocomplete="off">
+                    <label class="btn btn-outline-primary" for="btnradioturns">Turns planner</label>
+                </div>
+            </div>
+            <br>
+            <br>
+            <div class="row" id="team_builder">
                 <div class="col-12 col-md-5"> <!--unit builder & enemy selector-->
-                    <div class="col-12">
                         <ul class="nav nav-tabs align-items-center" id="myTab" role="tablist"><!--Unit builder-->
                             <li class="nav-item">
                               <button class="nav-link active" id="unit1" data-bs-toggle="tab" data-bs-target="#panelunit1" type="button" role="tab"><img src="img/unit/08231.png" height="60" width="60"/></button>
@@ -464,12 +477,320 @@
                                   </div>
                             </div>
                         </div>
+                </div>
+                <div class="col-12 col-md-7 card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-6 gy-1 d-grid">
+                                    <button class="btn btn-outline-secondary" type="button" id="right_hand">
+                                        <img src="img/equipment/greatswords/hyperion_viii.png" class="roundedC float-start" height="62" width="62" id="right_hand_img">
+                                        <p id="right_hand_p">Hyperion (VIII)<br>180 atk<br>+30% atk</p>
+                                    </button>
+                            </div>
+                            <div class="col-6 gy-1 d-grid">
+                                    <button class="btn btn-outline-secondary" type="button" id="left_hand" disabled id="left_hand">
+                                        <img src="/img/ui/add.png" class="roundedC float-start" height="62" width="62" id="left_hand_img">
+                                        <p id="left_hand_p">Left hand<br>Unavailable</p>
+                                    </button>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6 gy-1">
+                                <div class="d-grid gap-2">
+                                    <button class="btn btn-outline-secondary" type="button" id="head">
+                                        <img src="img/equipment/hat/scanning_goggles.png" class="roundedC float-start" height="40" width="48" id="head_img">
+                                        <p id="p_head">Scanning googles<br>52 atk<br>+50% plant/stone/bug/machine killer<br><br></p>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="col-6 gy-1">
+                                <div class="d-grid gap-2">
+                                    <button class="btn btn-outline-secondary" type="button" id="body">
+                                        <img src="img/equipment/clothes/storm_bunny_jacket.png" class="roundedC float-start" id="body_img">
+                                        <p id="body_p">Storm bunny jacket<br>900 hp | 55 atk | 10 def<br>+50% machine/stone killer +20% hp | +30% atk</p>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6 gy-1">
+                                <div class="d-grid gap-2">
+                                    <button class="btn btn-outline-secondary" type="button" id="accesory1">
+                                        <img src="img/equipment/accesory/storm_kickers.png" class="roundedC float-start" id="accesory1_img">
+                                        <p id="accesory1_p">Storm kickers<br>51 atk | 10 def<br>+20% hp | +20% lb dmg | absorb lightning</p>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="col-6 gy-1">
+                                <div class="d-grid gap-2">
+                                    <button class="btn btn-outline-secondary" type="button" id="accesory2">
+                                        <img src="img/equipment/accesory/storm_kickers.png" class="roundedC float-start" id="accesory2_img">
+                                        <p id="accesory2_p">Storm kickers<br>51 atk | 10 def<br>+20% hp | +20% lb dmg | absorb lightning</p>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6 gy-1">
+                                <div class="d-grid gap-2">
+                                    <button class="btn btn-outline-secondary" type="button" id="ability1">
+                                        <img src="img/equipment/abilities/warrior_of_the_crystal.png" class="roundedC float-start" id="ability1_img">
+                                        <p>Warrior of the crystal<br>+60% atk/mag<br>+50% equip. atk/mag<br>+25% accuracy<br><br></p>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="col-6 gy-1">
+                                <div class="d-grid gap-2">
+                                    <button class="btn btn-outline-secondary" type="button" id="ability2">
+                                        <img src="img/equipment/abilities/a_heros_bond.png" class="roundedC float-start" id="ability2_img">
+                                        <p id="ability2_p">A hero's bond<br>+30% atk w/great sword<br>+30% atk w/clothes<br><p class="text-decoration-line-through">+30% atk w/light armor</p></p>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6 gy-1">
+                                <div class="d-grid gap-2">
+                                    <button class="btn btn-outline-secondary" type="button" id="ability3">
+                                        <img src="img/equipment/abilities/killer.png" class="roundedC float-start" id="ability3_img">
+                                        <p id="ability3_p">Man-eater+<br>+75% physical & magical human killer</p>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="col-6 gy-1">
+                                <div class="d-grid gap-2">
+                                    <button class="btn btn-outline-secondary" type="button" id="ability4">
+                                        <img src="img/equipment/abilities/killer.png" class="roundedC float-start" id="ability4_img">
+                                        <p id="ability4_p">Supreme victor<br>+75% physical & magical demon/human killer</p>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6 gy-1">
+                                <div class="d-grid gap-2">
+                                    <button class="btn btn-outline-secondary" type="button" id="vision_card" disabled>
+                                        <img src="img/ui/add.png" class="roundedC float-start" id="vision_card_img">
+                                        <p id="vision_card_p">Vision card<br>Unavailable<br><br><br><br></p>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="col-6 gy-1">
+                                <div class="d-grid gap-2">
+                                    <button class="btn btn-outline-secondary" type="button" id="esper">
+                                        <img src="img/espers/diabolos.png" class="roundedC float-start" id="esper_img"" height="60" width="60">
+                                        <p>Diabolos 3*<br>55 atk | 122 mag<br>+125% physical demon/human killer<br>+75% magical demon/human killer</p>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="col col-md-7"><!--graph and turn selector-->
-
+            </div>
+            <div class="row" id="enemy_selector" style="display: none;">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-12 col-md-6">
+                                <label for="enemies" class="form-label">Select an enemy</label>
+                                <input class="form-control" list="enemy_list" id="enemies" placeholder="Armor of oppresion EXT">
+                                <datalist id="enemy_list">
+                                    <option value="Armor of oppresion EXT">
+                                    <option value="Gragantuan grub in the sand">
+                                    <option value="Heavenly flames">
+                                    <option value="Everyone's grudge">
+                                    <option value="The whip-whikered beast">
+                                </datalist>
+                            </div>
+                        </div>
+                        <br>
+                        <br>
+                        <div class="row"> <!--img, missions and parameters-->
+                            <div class="col-12 col-md-3">
+                                <img src="img/bosses/iron_giant.png" class="roundedC float-start">
+                            </div>
+                            <div class="col-12 col-md-5">
+                                <div class="card">
+                                    <h5 class="card-header bg-primary text-white">Missions</h5>
+                                    <div class="card-body">
+                                        <dl class="row">
+                                        <dt class="col-6">Complete the quest</dt>
+                                            <dd class="col-6">Darksteel heavy armor</dd>
+                                            <dt class="col-6">No items</dt>
+                                            <dd class="col-6">Trust moogle (50% all)</dd>
+                                            <dt class="col-6">Defeat within 15 turns</dt>
+                                            <dd class="col-6">UOC ticket x1</dd>
+                                            <dt class="col-6">Clear without any ally being KO'd</dt>
+                                            <dd class="col-6">STMR ticket x5</dd>
+                                        </dl>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-4">
+                                <div class="card">
+                                    <h5 class="card-header bg-primary text-white">Parameters</h5>
+                                    <div class="card-body">
+                                        <dl class="row">
+                                            <dt class="col-6">Race</dt>
+                                            <dd class="col-6">Human</dd>
+                                            <dt class="col-6">HP</dt>
+                                            <dd class="col-6">3,500,000,000</dd>
+                                            <dt class="col-6">MP</dt>
+                                            <dd class="col-6">2,000,000</dd>
+                                            <dt class="col-6">ATK</dt>
+                                            <dd class="col-6">4,500</dd>
+                                            <dt class="col-6">MAG</dt>
+                                            <dd class="col-6">4,500</dd>
+                                            <dt class="col-6">DEF</dt>
+                                            <dd class="col-6">100,000</dd>
+                                            <dt class="col-6">SPR</dt>
+                                            <dd class="col-6">50,000</dd>
+                                            <dt class="col-6">Breakable?</dt>
+                                            <dd class="col-6">MAG & SPR</dd>
+                                        </dl>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 col-md-6">
+                                <table class="table">
+                                    <thead>
+                                      <tr>
+                                        <th scope="col"><img src="img/ui/fire.png" class="roundedC float-start" height="38" width="38"></th>
+                                        <th scope="col"><img src="img/ui/ice.png" class="roundedC float-start" height="38" width="38"></th>
+                                        <th scope="col"><img src="img/ui/lightning.png" class="roundedC float-start" height="38" width="38"></th>
+                                        <th scope="col"><img src="img/ui/water.png" class="roundedC float-start" height="38" width="38"></th>
+                                        <th scope="col"><img src="img/ui/wind.png" class="roundedC float-start" height="38" width="38"></th>
+                                        <th scope="col"><img src="img/ui/earth.png" class="roundedC float-start" height="38" width="38"></th>
+                                        <th scope="col"><img src="img/ui/light.png" class="roundedC float-start" height="38" width="38"></th>
+                                        <th scope="col"><img src="img/ui/dark.png" class="roundedC float-start" height="38" width="38"></th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                      <tr>
+                                        <td class="table-success">+50%</td>
+                                        <td class="table-success">+50%</td>
+                                        <td class="table-danger">-100%</td>
+                                        <td class="table-danger">-100%</td>
+                                        <td class="table-success">+50%</td>
+                                        <td class="table-success">+50%</td>
+                                        <td class="table-success">+50%</td>
+                                        <td class="table-success">+50%</td>
+                                      </tr>
+                                    </tbody>
+                                  </table>
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <table class="table">
+                                    <thead>
+                                      <tr>
+                                        <th scope="col"><img src="img/ui/poison.png" class="roundedC float-start" height="38" width="38"></th>
+                                        <th scope="col"><img src="img/ui/blind.png" class="roundedC float-start" height="38" width="38"></th>
+                                        <th scope="col"><img src="img/ui/sleep.png" class="roundedC float-start" height="38" width="38"></th>
+                                        <th scope="col"><img src="img/ui/silence.png" class="roundedC float-start" height="38" width="38"></th>
+                                        <th scope="col"><img src="img/ui/paralize.png" class="roundedC float-start" height="38" width="38"></th>
+                                        <th scope="col"><img src="img/ui/confuse.png" class="roundedC float-start" height="38" width="38"></th>
+                                        <th scope="col"><img src="img/ui/disease.png" class="roundedC float-start" height="38" width="38"></th>
+                                        <th scope="col"><img src="img/ui/stone.png" class="roundedC float-start" height="38" width="38"></th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                      <tr>
+                                        <td class="table-success">+100%</td>
+                                        <td class="table-success">+100%</td>
+                                        <td class="table-danger">+95%</td>
+                                        <td class="table-success">+100%</td>
+                                        <td class="table-danger">+95%</td>
+                                        <td class="table-success">+100%</td>
+                                        <td class="table-success">+100%</td>
+                                        <td class="table-success">+100%</td>
+                                      </tr>
+                                    </tbody>
+                                  </table>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card">
+                                    <h5 class="card-header bg-primary text-white">Abilities</h5>
+                                    <div class="card-body">
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">Name</th>
+                                                    <th scope="col">Effect</th>
+                                                    <th scope="col">Target</th>
+                                                    <th scope="col">ATK</th>
+                                                    <th scope="col">DMG</th>
+                                                    <th scope="col">Element</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <th scope="row">Meteor</td>
+                                                    <td>Magic damage (10.67x) to all enemies</td>
+                                                    <td>AoE</td>
+                                                    <td>Magic</td>
+                                                    <td>Magic</td>
+                                                    <td></td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">Reaper</td>
+                                                    <td>Physical damage (7x) to all enemies</td>
+                                                    <td>AoE</td>
+                                                    <td>Physical</td>
+                                                    <td>Physical</td>
+                                                    <td></td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">Pressure is tightening!</td>
+                                                    <td>Fixed damage (1000) to all enemies.<br>
+                                                        Inflict paralyze (100%) to all enemies.<br>
+                                                        Fixed damage (0.01x) as MP drain to all enemies.</td>
+                                                    <td>AoE</td>
+                                                    <td>Fixed</td>
+                                                    <td>Fixed</td>
+                                                    <td></td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">The pressure is overwhelming!</td>
+                                                    <td>Fixed damage (1000) to all enemies.<br>
+                                                        Inflict paralyze (100%) to all enemies.<br>
+                                                        Fixed damage (0.01x) as MP drain to all enemies.</td>
+                                                    <td>AoE</td>
+                                                    <td>Fixed</td>
+                                                    <td>Fixed</td>
+                                                    <td></td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">Power is being released!</td>
+                                                    <td>Increase ATK/DEF/MAG/SPR (100%) for 3 turns to caster</td>
+                                                    <td>Self</td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
+
+        <script>
+            function showBuilder() {
+                document.getElementById("team_builder").style.display="";
+                document.getElementById("enemy_selector").style.display="none"
+            }
+            function showEnemy() {
+                document.getElementById("team_builder").style.display="none";
+                document.getElementById("enemy_selector").style.display=""
+            }
+        </script>
     </body>
 </html>
