@@ -7,6 +7,7 @@
 
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
         <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css">
         <link rel="stylesheet" href="css/styles.css">
         <title>Ffbe Teams</title>
@@ -38,14 +39,15 @@
                     <input type="radio" class="btn-check" name="btnradio" id="btnradioenemy" autocomplete="off" onclick="showEnemy()">
                     <label class="btn btn-outline-primary" for="btnradioenemy">Enemy selector</label>
                   
-                    <input type="radio" class="btn-check" name="btnradio" id="btnradioturns" autocomplete="off">
+                    <input type="radio" class="btn-check" name="btnradio" id="btnradioturns" autocomplete="off"  onclick="showGraph()">
                     <label class="btn btn-outline-primary" for="btnradioturns">Turns planner</label>
                 </div>
             </div>
             <br>
             <br>
-            <div class="row" id="team_builder">
-                <div class="col-12 col-md-5"> <!--unit builder & enemy selector-->
+            <div class="container" id="team_builder"> <!--unit builder-->
+                <div class="row">
+                    <div class="col-12 col-md-6">
                         <ul class="nav nav-tabs align-items-center" id="myTab" role="tablist"><!--Unit builder-->
                             <li class="nav-item">
                               <button class="nav-link active" id="unit1" data-bs-toggle="tab" data-bs-target="#panelunit1" type="button" role="tab"><img src="img/unit/08231.png" height="60" width="60"/></button>
@@ -422,7 +424,7 @@
                             </div>
                         </div>
                 </div>
-                <div class="col-12 col-md-7 card">
+                <div class="col-12 col-md-6 card">
                     <div class="card-body">
                         <div class="row">
                             <div class="col-6 gy-1 d-grid">
@@ -530,8 +532,9 @@
                         </div>
                     </div>
                 </div>
+                </div>
             </div>
-            <div class="row" id="enemy_selector" style="display: none;">
+            <div class="container" id="enemy_selector" style="display: none;"> <!--Enemy selector-->
                 <div class="card">
                     <div class="card-body">
                         <div class="row">
@@ -788,16 +791,169 @@
                     </div>
                 </div>
             </div>
+            <div class="container" id="turn_selector" style="display: none;"> <!--Turn selector-->
+                <div class="row">
+                    <div class="col-12 col-lg-6">
+                        <canvas id="myChart"></canvas>
+                    </div>
+                    <div class="col-12 col-lg-6">
+                        <div class="card col-12">
+                            <h5 class="card-header bg-primary text-white">Turn selector</h5>
+                            <div class="card-body">
+                                <div class="row justify-content-center">
+                                    <div class="btn-group col-12" role="group">
+                                        <input type="radio" class="btn-check" name="btnradiograph" id="btnradioCumulative" autocomplete="off" onclick="cumulative()">
+                                        <label class="btn btn-outline-primary" for="btnradioCumulative">Cumulative</label>
+                                      
+                                        <input type="radio" class="btn-check" name="btnradiograph" id="btnradioperturn" autocomplete="off" onclick="perTurn()">
+                                        <label class="btn btn-outline-primary" for="btnradioperturn">Damage per turn</label>
+                                      
+                                        <input type="radio" class="btn-check" name="btnradiograph" id="btnradiodetail" autocomplete="off">
+                                        <label class="btn btn-outline-primary" for="btnradiodetail">Turn detail</label>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="row align-items-center">
+                                    <div class="col-3">
+                                        <select id="turn_select" class="form-select">
+                                            <option>Turn 1</option>
+                                            <option>Turn 2</option>
+                                            <option>Turn 3</option>
+                                            <option>Turn 4</option>
+                                            <option>Turn 5</option>
+                                            <option>Turn 6</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-3">
+                                        <button type="button" class="btn btn-primary">
+                                            Next turn
+                                        </button>
+                                    </div>
+                                    <div class="col-4">
+                                        <button type="button" class="btn btn-primary">
+                                            Remove turn
+                                        </button>
+                                    </div>
+                                </div>
+                                <br>
+                                <b>Click on a unit to select their actions</b>
+                                <div class="row">
+                                    <div class="col-2">
+                                        <button type="button" class="btn">
+                                            <img src="img/unit/08231.png">
+                                        </button>
+                                        <input type="color" class="form-control form-control-color" id="exampleColorInput" value="#563d7c" title="Choose your color">
+                                    </div>
+                                    <div class="col-2">
+                                        <button type="button" class="btn">
+                                            <img src="img/unit/08234.png">
+                                        </button>
+                                        <input type="color" class="form-control form-control-color" id="exampleColorInput" value="#ff2929" title="Choose your color">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="row justify-content-center">
+                    <div class="card col-12 col-lg-4">
+                        <h5 class="card-header bg-primary text-white">Active effects</h5>
+                        <div class="card-body">
+                            <ul>
+                                <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+                                <li>Pellentesque in elit pulvinar, consectetur lorem id, pretium velit.</li>
+                                <li>Nunc posuere ex scelerisque laoreet porta.</li>
+                                <li>Praesent eget ex maximus, mattis odio commodo, consequat ligula.</li>
+                                <li>Sed in est in ipsum dictum lobortis id ac augue.</li>
+                                <li>Pellentesque a mauris ac nisi ultrices sollicitudin vitae vel ante.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="card col-12 col-lg-4">
+                        <h5 class="card-header bg-primary text-white">Actions in this turn</h5>
+                        <div class="card-body">
+                            <ul>
+                                <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+                                <li>Pellentesque in elit pulvinar, consectetur lorem id, pretium velit.</li>
+                                <li>Nunc posuere ex scelerisque laoreet porta.</li>
+                                <li>Praesent eget ex maximus, mattis odio commodo, consequat ligula.</li>
+                                <li>Sed in est in ipsum dictum lobortis id ac augue.</li>
+                                <li>Pellentesque a mauris ac nisi ultrices sollicitudin vitae vel ante.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="card col-12 col-lg-4">
+                        <h5 class="card-header bg-primary text-white">Notes</h5>
+                        <div class="card-body">
+                            <ul>
+                                <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+                                <li>Pellentesque in elit pulvinar, consectetur lorem id, pretium velit.</li>
+                                <li>Nunc posuere ex scelerisque laoreet porta.</li>
+                                <li>Praesent eget ex maximus, mattis odio commodo, consequat ligula.</li>
+                                <li>Sed in est in ipsum dictum lobortis id ac augue.</li>
+                                <li>Pellentesque a mauris ac nisi ultrices sollicitudin vitae vel ante.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <script>
             function showBuilder() {
                 document.getElementById("team_builder").style.display="";
                 document.getElementById("enemy_selector").style.display="none"
+                document.getElementById("turn_selector").style.display="none"
             }
             function showEnemy() {
                 document.getElementById("team_builder").style.display="none";
                 document.getElementById("enemy_selector").style.display=""
+                document.getElementById("turn_selector").style.display="none"
+            }
+            function showGraph(){
+                document.getElementById("team_builder").style.display="none";
+                document.getElementById("enemy_selector").style.display="none"
+                document.getElementById("turn_selector").style.display=""
+            }
+
+            const labels = [
+                    '1',
+                    '2',
+                    '3',
+                    '4',
+                    '5',
+                    '6',
+                ];
+                const data = {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Damage',
+                        backgroundColor: 'rgb(255, 99, 132)',
+                        borderColor: 'rgb(255, 99, 132)',
+                        data: [0, 10, 5, 2, 20, 30, 45],
+                    }]
+                };
+                const config = {
+                    type: 'bar',
+                    data,
+                    options: {}
+                };
+                var myChart = new Chart(
+                    document.getElementById('myChart'),
+                    config
+                );
+
+            function cumulative(){
+                myChart.data.datasets[0].data = [0, 10, 15, 17, 37, 67, 112];
+                myChart.config.type = "line";
+                myChart.update();
+            }
+
+            function perTurn(){
+                myChart.data.datasets[0].data = [0, 10, 5, 2, 20, 30, 45];
+                myChart.config.type = "bar";
+                myChart.update();
             }
         </script>
     </body>
