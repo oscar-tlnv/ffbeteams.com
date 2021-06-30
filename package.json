@@ -1,0 +1,26 @@
+{
+  "name": "ffbeteams.com",
+  "version": "0.0.1",
+  "description": "ffbe team builder",
+  "main": "index.html",
+  "dependencies": {
+    "font-awesome": "^4.7.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oscar-tlnv/ffbeteams.com.git"
+  },
+  "keywords": [
+    "ffbe"
+  ],
+  "author": "Oscar Tlatempa Nava",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/oscar-tlnv/ffbeteams.com/issues"
+  },
+  "homepage": "https://github.com/oscar-tlnv/ffbeteams.com#readme"
+}
